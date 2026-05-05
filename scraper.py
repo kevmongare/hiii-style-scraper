@@ -33,7 +33,7 @@ from playwright.sync_api import sync_playwright
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 SCRAPE_URL      = "https://www.hiii-style.com/category?sort=newest-arrivals"
 SERVICE_ACCOUNT = "service_account.json"   # Path to your Google SA JSON key
-SPREADSHEET_ID  = "YOUR_SPREADSHEET_ID"   # From the Sheets URL
+SPREADSHEET_ID  = "1hCa_w0d1r6FrLJzJnYOhw8BDHLj-Eb_qSLun-QP8j5o"   # From the Sheets URL
 SHEET_NAME      = "Newest Arrivals"        # Tab name inside the spreadsheet
 EAT             = pytz.timezone("Africa/Nairobi")
 RUN_TIME        = "08:00"                  # Daily run time in EAT
