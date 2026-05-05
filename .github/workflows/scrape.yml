@@ -1,1 +1,30 @@
+name: Daily Scrape
 
+on:
+  schedule:
+    - cron: '0 5 * * *'  # 05:00 UTC = 08:00 EAT (Africa/Nairobi)
+  workflow_dispatch:       # allows manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Write service account key
+        run: echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT }}' > service_account.json
+
+      - name: Run scraper
+        run: python scraper.py --run-once
